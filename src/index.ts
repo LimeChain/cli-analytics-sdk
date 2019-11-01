@@ -1,5 +1,3 @@
-import CliAnalytics from './analytics/cli-analytics';
+import CliAnalyticsClient from './analytics/cli-analytics';
 
-export {
-    CliAnalytics
-}
+export = CliAnalyticsClient

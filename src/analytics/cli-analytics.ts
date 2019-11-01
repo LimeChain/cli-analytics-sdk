@@ -1,37 +1,37 @@
-import axios, { Method, AxiosResponse, AxiosRequestConfig }  from 'axios';
+import axios, { Method, AxiosResponse }  from 'axios';
 import * as config from './config.json';
 
-class CliAnalytics {
+class CliAnalyticsClient {
 
-    id: string
+    appId: string
     url: string
 
     constructor (options) {
-        this.id = options.id
+        this.appId = options.appId
         this.url = options.url
     }
 
-    async recordCommand(command: string, metadata?: Array<any>) { 
+    async recordEvent(eventType: string, metadata?: Array<any>) { 
         await axios({
-            headers: {[config.app_id_key]: this.id},
+            headers: {[config.app_id_key]: this.appId},
             method: 'POST',
             url: this.url,
             data: {
-                type: command,
+                type: eventType,
                 metadata: metadata
             }
         });
     }
 
-    async readData(commandType:string): Promise<AxiosResponse> {
+    async getEvents(eventType:string): Promise<AxiosResponse> {
         let resource = await axios({
-            headers: {[config.app_id_key]: this.id},
+            headers: {[config.app_id_key]: this.appId},
             method: 'GET',
-            url: `${this.url}/${commandType}`
+            url: `${this.url}/${eventType}`
         });
 
         return resource.data
     }
 }
 
-export default CliAnalytics
+export default CliAnalyticsClient

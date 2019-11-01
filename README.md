@@ -6,10 +6,10 @@ Cli-Analytics App is an application specially designed to keep a record of all c
 Set up the cli analytics client:
 
 ```
-    const CliAnalytics = require('cli-analytics-sdk').CliAnalytics;
+    const CliAnalyticsClient = require('cli-analytics-sdk');
     
-    const analyticsClient = new CliAnalytics({
-        id: yourAppId,
+    const analyticsClient = new CliAnalyticsClient({
+        appId: yourAppId,
         url: yourAppUrl
     })
 ```
@@ -19,12 +19,12 @@ Where `yourAppId` is the id that would verify your access to the App and `yourAp
 To record a data to your storage:
 
 ```
-    analyticsClient.recordData(command, metadata);
+    analyticsClient.recordEvent(eventType, metadata);
 ```
-Where `command` is the name of the cli command that has been executed and `matadata` is array of command's params values if any.
+Where `eventType` is the name of the cli command that has been executed and `metadata` is array of command's params values if any.
 
 If you want to query a data:
 
 ```
-    let response = await analyticsClient.readData(command)
+    let response = await analyticsClient.getEvents(eventType)
 ```
