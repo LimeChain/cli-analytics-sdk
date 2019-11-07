@@ -3,6 +3,10 @@
 With this SDK you can set up a client for a Cli-Analytics App.
 Cli-Analytics App is an application specially designed to keep a record of all cli commands that are executed for a certain project. How to build it up for you personal needs, find out [here](https://github.com/LimeChain/cli-analytics)
 
+Insatll the SDK as a npm package:
+
+``` npm install cli-analytics-sdk```
+
 Set up the cli analytics client:
 
 ```
